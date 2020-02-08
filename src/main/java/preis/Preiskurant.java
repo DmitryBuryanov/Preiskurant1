@@ -2,6 +2,7 @@ package preis;
 
 public class Preiskurant{
     public static void main(String[] args) {
-        System.out.println("HI");
+        double i = 24.764;
+        System.out.println(i);
     }
 }
