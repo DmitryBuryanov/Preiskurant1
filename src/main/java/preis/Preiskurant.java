@@ -1,6 +1,7 @@
 package preis;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Preiskurant {
 
@@ -8,31 +9,33 @@ public class Preiskurant {
 
     }
 
-    public static ArrayList<Good> put(ArrayList<Good> newList, Good newGood) {
-        newList.add(newGood);
-        return newList;
+    public static HashSet<Good> put(HashSet<Good> newSet, Good newGood) {
+        newSet.add(newGood);
+        return newSet;
     }
 
     public static ArrayList<Good> changePrice(ArrayList<Good> newList, Good newGood) {
         for (int i = 0; i < newList.size(); i++) {
-            if (newGood.name == newList.get(i).name) newList.get(i).price = newGood.price;
+            if (newGood.name == newList.get(i).name && newGood.code == newList.get(i).code)
+                newList.get(i).price = newGood.price;
         }
         return newList;
     }
 
     public static ArrayList<Good> changeName(ArrayList<Good> newList, Good newGood) {
         for (int i = 0; i < newList.size(); i++) {
-            if (newGood.code == newList.get(i).code) newList.get(i).name = newGood.name;
+            if (newGood.code == newList.get(i).code && newGood.price == newList.get(i).price)
+                newList.get(i).name = newGood.name;
         }
         return newList;
     }
 
-    public static ArrayList<Good> delete(ArrayList<Good> newList, Good newGood) {
+    public ArrayList<Good> delete(ArrayList<Good> newList, Good newGood) {
         newList.remove(newGood);
         return newList;
     }
 
-    public static double checkPrice(ArrayList<Good> newList, int newCode, int count) {
+    public double checkPrice(ArrayList<Good> newList, int newCode, int count) {
         for (int i = 0; i < newList.size(); i++) {
             if (newCode == newList.get(i).code) return newList.get(i).price * count;
         }
