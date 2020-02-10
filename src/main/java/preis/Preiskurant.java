@@ -30,12 +30,12 @@ public class Preiskurant {
         return newList;
     }
 
-    public ArrayList<Good> delete(ArrayList<Good> newList, Good newGood) {
-        newList.remove(newGood);
-        return newList;
+    public static HashSet<Good> delete(HashSet<Good> newSet, Good newGood) {
+        newSet.remove(newGood);
+        return newSet;
     }
 
-    public double checkPrice(ArrayList<Good> newList, int newCode, int count) {
+    public static double checkPrice(ArrayList<Good> newList, int newCode, int count) {
         for (int i = 0; i < newList.size(); i++) {
             if (newCode == newList.get(i).code) return newList.get(i).price * count;
         }
