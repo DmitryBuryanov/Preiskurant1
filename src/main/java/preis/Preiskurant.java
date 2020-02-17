@@ -1,45 +1,48 @@
 package preis;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class Preiskurant {
 
-    public static void main(String[] args) {
+    ArrayList<Good> newList;
 
+    public Preiskurant(ArrayList<Good> newList) {
+        this.newList = newList;
     }
 
-    public static HashSet<Good> put(HashSet<Good> newSet, Good newGood) {
-        newSet.add(newGood);
-        return newSet;
+    public Preiskurant put(Good newGood) {
+        newList.add(newGood);
+        return this;
     }
 
-    public static ArrayList<Good> changePrice(ArrayList<Good> newList, Good newGood) {
-        for (int i = 0; i < newList.size(); i++) {
-            if (newGood.name == newList.get(i).name && newGood.code == newList.get(i).code)
-                newList.get(i).price = newGood.price;
+    public Preiskurant changePrice(Good newGood) {
+        for (Good good : newList) {
+            if (newGood.name.equals(good.name) && newGood.code == good.code)
+                good.price = newGood.price;
         }
-        return newList;
+        return this;
     }
 
-    public static ArrayList<Good> changeName(ArrayList<Good> newList, Good newGood) {
-        for (int i = 0; i < newList.size(); i++) {
-            if (newGood.code == newList.get(i).code && newGood.price == newList.get(i).price)
-                newList.get(i).name = newGood.name;
+    public Preiskurant changeName(Good newGood) {
+        for (Good good : newList) {
+            if (newGood.code == good.code && newGood.price == good.price)
+                good.name = newGood.name;
         }
-        return newList;
+        return this;
     }
 
-    public static HashSet<Good> delete(HashSet<Good> newSet, Good newGood) {
-        newSet.remove(newGood);
-        return newSet;
+    public Preiskurant delete(Good newGood) {
+        for (Good good : newList) {
+            if (newGood.code == good.code && newGood.name.equals(good.name) && newGood.price == good.price)
+                newList.remove(good);
+        }
+        return this;
     }
 
-    public static double checkPrice(ArrayList<Good> newList, int newCode, int count) {
-        for (int i = 0; i < newList.size(); i++) {
-            if (newCode == newList.get(i).code) return newList.get(i).price * count;
+    public double checkPrice(int newCode, int count) {
+        for (Good good : newList) {
+            if (newCode == good.code) return good.price * count;
         }
         return 0.0;
     }
-
 }
