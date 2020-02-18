@@ -10,4 +10,8 @@ public class Good {
         this.code = code;
         this.price = price;
     }
+
+    public boolean goodEquals(Good newGood) {
+        return name.equals(newGood.name) && code == newGood.code && price == newGood.price;
+    }
 }

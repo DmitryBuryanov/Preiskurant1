@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Preiskurant {
 
-    ArrayList<Good> newList;
+    private ArrayList<Good> newList;
 
     public Preiskurant(ArrayList<Good> newList) {
         this.newList = newList;
@@ -32,10 +32,7 @@ public class Preiskurant {
     }
 
     public Preiskurant delete(Good newGood) {
-        for (Good good : newList) {
-            if (newGood.code == good.code && newGood.name.equals(good.name) && newGood.price == good.price)
-                newList.remove(good);
-        }
+        newList.removeIf(good -> good.goodEquals(newGood));
         return this;
     }
 
@@ -45,4 +42,13 @@ public class Preiskurant {
         }
         return 0.0;
     }
+
+    public boolean preiskEquals(Preiskurant newPreis) {
+        if (this.newList.size() != newPreis.newList.size()) return false;
+        for (int i = 0; i < this.newList.size(); i++) {
+            if (!this.newList.get(i).goodEquals(newPreis.newList.get(i))) return false;
+        }
+        return true;
+    }
+
 }

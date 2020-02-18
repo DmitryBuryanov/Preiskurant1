@@ -1,6 +1,5 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import preis.Equals;
 import preis.Good;
 import preis.Preiskurant;
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ public class test {
         expList.put(new Good("Колбаса", 348, 278.90));
         expList.put(new Good("Курица", 23, 150.78));
 
-        assertTrue(Equals.equals(expList, newList.put(newGood)));
+        assertTrue(expList.preiskEquals(newList.put(newGood)));
     }
 
     @Test
@@ -42,7 +41,7 @@ public class test {
         expList.put(new Good("Масло", 234, 48.99));
         expList.put(new Good("Колбаса", 348, 278.90));
 
-        assertTrue(Equals.equals(expList, newList.changePrice(newGood)));
+        assertTrue(expList.preiskEquals(newList.changePrice(newGood)));
     }
 
     @Test
@@ -59,7 +58,7 @@ public class test {
         expList.put(new Good("Масло", 234, 48.99));
         expList.put(new Good("Колбаса", 348, 278.90));
 
-        assertTrue(Equals.equals(expList, newList.changeName(newGood)));
+        assertTrue(expList.preiskEquals(newList.changeName(newGood)));
     }
 
     @Test
@@ -75,7 +74,7 @@ public class test {
         expList.put(new Good("Масло", 234, 48.99));
         expList.put(new Good("Колбаса", 348, 278.90));
 
-        assertTrue(Equals.equals(expList, newList.delete(newGood)));
+        assertTrue(expList.preiskEquals(newList.delete(newGood)));
     }
 
     @Test
