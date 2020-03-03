@@ -18,13 +18,14 @@ public class test {
         newList.put(new Good("Молоко", 18, 55.75));
         newList.put(new Good("Масло", 234, 48.99));
         newList.put(new Good("Колбаса", 348, 278.90));
+        newList.put(newGood);
 
         expList.put(new Good("Молоко", 18, 55.75));
         expList.put(new Good("Масло", 234, 48.99));
         expList.put(new Good("Колбаса", 348, 278.90));
         expList.put(new Good("Курица", 23, 150.78));
 
-        assertTrue(expList.preiskEquals(newList.put(newGood)));
+        assertTrue(expList.preiskEquals(newList));
     }
 
     @Test
@@ -41,7 +42,9 @@ public class test {
         expList.put(new Good("Масло", 234, 48.99));
         expList.put(new Good("Колбаса", 348, 278.90));
 
-        assertTrue(expList.preiskEquals(newList.changePrice(newGood)));
+        newList.changePrice("Курица", 150.78);
+
+        assertTrue(expList.preiskEquals(newList));
     }
 
     @Test
@@ -58,7 +61,9 @@ public class test {
         expList.put(new Good("Масло", 234, 48.99));
         expList.put(new Good("Колбаса", 348, 278.90));
 
-        assertTrue(expList.preiskEquals(newList.changeName(newGood)));
+        newList.changeName(23, "Цыпленок");
+
+        assertTrue(expList.preiskEquals(newList));
     }
 
     @Test
@@ -74,7 +79,9 @@ public class test {
         expList.put(new Good("Масло", 234, 48.99));
         expList.put(new Good("Колбаса", 348, 278.90));
 
-        assertTrue(expList.preiskEquals(newList.delete(newGood)));
+        newList.delete(newGood);
+
+        assertTrue(expList.preiskEquals(newList));
     }
 
     @Test

@@ -10,30 +10,28 @@ public class Preiskurant {
         this.newList = newList;
     }
 
-    public Preiskurant put(Good newGood) {
+    public void put(Good newGood) {
+        for (Good good : newList) {
+            if (good.name.equals(newGood.name) || good.code == newGood.code) throw
+                    new IllegalArgumentException("Нельзя добавить товар");
+        }
         newList.add(newGood);
-        return this;
     }
 
-    public Preiskurant changePrice(Good newGood) {
+    public void changePrice(String name, Double price) {
         for (Good good : newList) {
-            if (newGood.name.equals(good.name) && newGood.code == good.code)
-                good.price = newGood.price;
+            if (name.equals(good.name)) good.price = price;
         }
-        return this;
     }
 
-    public Preiskurant changeName(Good newGood) {
+    public void changeName(int code, String name) {
         for (Good good : newList) {
-            if (newGood.code == good.code && newGood.price == good.price)
-                good.name = newGood.name;
+            if (code == good.code) good.name = name;
         }
-        return this;
     }
 
-    public Preiskurant delete(Good newGood) {
+    public void delete(Good newGood) {
         newList.removeIf(good -> good.goodEquals(newGood));
-        return this;
     }
 
     public double checkPrice(int newCode, int count) {
